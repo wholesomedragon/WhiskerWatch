@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoafWatch - Brooklyn's Cat Sitting Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2C2C54;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #114945 0%, #2C2C54 100%);
+            padding: 60px 24px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: #F5D6BA;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .hero-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -2px;
+        }
+
+        .hero .tagline {
+            font-size: 22px;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .hero .tagline span {
+            color: #F49D6E;
+        }
+
+        /* Waitlist Section - NOW AT TOP */
+        .waitlist {
+            background: #F5D6BA;
+            padding: 60px 24px 80px;
+            text-align: center;
+        }
+
+        .waitlist h2 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            color: #2C2C54;
+        }
+
+        .waitlist .subtitle {
+            font-size: 18px;
+            color: #2C2C54;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        .waitlist-forms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .waitlist-card {
+            background: white;
+            border-radius: 24px;
+            padding: 36px;
+            flex: 1;
+            min-width: 320px;
+            max-width: 420px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
+        }
+
+        .waitlist-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .waitlist-card.featured {
+            border: 3px solid #114945;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #114945;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .waitlist-card h3 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            color: #2C2C54;
+        }
+
+        .waitlist-card .card-subtitle {
+            font-size: 15px;
+            color: #2C2C54;
+            opacity: 0.6;
+            margin-bottom: 24px;
+        }
+
+        .earnings-highlight {
+            background: linear-gradient(135deg, #114945, #2C2C54);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .earnings-highlight .big-number {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .earnings-highlight .label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #2C2C54;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #ACC3A6;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #114945;
+            box-shadow: 0 0 0 4px rgba(17, 73, 69, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px 24px;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-coral {
+            background: #F49D6E;
+            color: white;
+        }
+
+        .btn-teal {
+            background: #114945;
+            color: white;
+        }
+
+        .success-message {
+            display: none;
+            background: #ACC3A6;
+            color: #114945;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Vet Tech Banner */
+        .vet-tech-banner {
+            background: white;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .vet-tech-banner h3 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #2C2C54;
+        }
+
+        .vet-tech-banner > p {
+            font-size: 18px;
+            color: #2C2C54;
+            opacity: 0.8;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vet-perks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .vet-perk {
+            background: linear-gradient(135deg, #114945, #2C2C54);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 16px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .vet-perk .perk-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .vet-perk .perk-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .vet-perk .perk-desc {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        /* Value Props */
+        .value-props {
+            background: #F5D6BA;
+            padding: 60px 24px;
+        }
+
+        .value-props h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #2C2C54;
+        }
+
+        .value-props > p {
+            text-align: center;
+            font-size: 18px;
+            color: #2C2C54;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .prop-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .prop-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .prop-card .icon {
+            width: 56px;
+            height: 56px;
+            background: #ACC3A6;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .prop-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #2C2C54;
+        }
+
+        .prop-card p {
+            font-size: 15px;
+            color: #2C2C54;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: white;
+            padding: 60px 24px;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #2C2C54;
+        }
+
+        .steps {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 36px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #114945, #2C2C54);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            margin-bottom: 6px;
+            color: #2C2C54;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: #2C2C54;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: #2C2C54;
+            padding: 40px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .social-proof p {
+            font-size: 20px;
+            font-weight: 600;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .social-proof span {
+            color: #F49D6E;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #114945 0%, #2C2C54 100%);
+            padding: 60px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .cta-section .btn {
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #F49D6E;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero .tagline {
+                font-size: 18px;
+            }
+
+            .waitlist h2, .value-props h2, .how-it-works h2, .vet-tech-banner h3 {
+                font-size: 28px;
+            }
+
+            .waitlist-card {
+                min-width: 100%;
+                padding: 28px;
+            }
+
+            .earnings-highlight .big-number {
+                font-size: 40px;
+            }
+
+            .vet-perk {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">🍞🐱</div>
+        <h1>LoafWatch</h1>
+        <p class="tagline"><span>Cat lovers unite!</span> Connect with vetted, cat-loving sitters in your Brooklyn neighborhood!</p>
+    </section>
+
+    <!-- Waitlist Section - MOVED TO TOP -->
+    <section class="waitlist" id="waitlist">
+        <h2>Join Our Founding Community</h2>
+        <p class="subtitle">Be among the first when we launch in Brooklyn!</p>
+
+        <div class="waitlist-forms">
+            <!-- Cat Sitter Form - NOW FEATURED -->
+            <div class="waitlist-card featured">
+                <div class="featured-badge">🌟 Now Recruiting</div>
+                <h3>Become a Sitter</h3>
+                <p class="card-subtitle">Turn your love for cats into income</p>
+
+                <div class="earnings-highlight">
+                    <div class="big-number">80%</div>
+                    <div class="label">of every booking is yours to keep</div>
+                </div>
+
+                <form id="sitter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="type" value="Cat Sitter">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" placeholder="What should we call you?" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" placeholder="(555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Are you a Vet Tech?</label>
+                        <select name="vet_tech" required>
+                            <option value="">Select one</option>
+                            <option value="Yes - Licensed Vet Tech">Yes, I'm a licensed Vet Tech 🩺</option>
+                            <option value="No - Cat Lover">No, but I'm a passionate cat lover!</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-teal">Join as a Founding Sitter →</button>
+                    <div class="success-message" id="sitter-success">🎉 Welcome to the family! We'll be in touch very soon.</div>
+                </form>
+            </div>
+
+            <!-- Cat Owner Form -->
+            <div class="waitlist-card">
+                <h3>Find a Sitter</h3>
+                <p class="card-subtitle">Get early access when we launch</p>
+                <form id="owner-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="type" value="Cat Owner">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" placeholder="What should we call you?" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" placeholder="(555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Brooklyn Neighborhood</label>
+                        <select name="neighborhood" required>
+                            <option value="">Where's your cat?</option>
+                            <option>Williamsburg</option>
+                            <option>Greenpoint</option>
+                            <option>Bushwick</option>
+                            <option>Park Slope</option>
+                            <option>Carroll Gardens</option>
+                            <option>DUMBO</option>
+                            <option>Brooklyn Heights</option>
+                            <option>Fort Greene</option>
+                            <option>Clinton Hill</option>
+                            <option>Crown Heights</option>
+                            <option>Bed-Stuy</option>
+                            <option>Flatbush</option>
+                            <option>Other Brooklyn</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-coral">Join the Waitlist →</button>
+                    <div class="success-message" id="owner-success">🎉 You're on the list! We'll let you know when we launch.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vet Tech Banner -->
+    <section class="vet-tech-banner">
+        <h3>🩺 Calling All Vet Techs!</h3>
+        <p>Your expertise deserves premium pay. Join as a founding sitter and unlock exclusive benefits.</p>
+
+        <div class="vet-perks">
+            <div class="vet-perk">
+                <div class="perk-icon">💰</div>
+                <div class="perk-title">Keep 90%</div>
+                <div class="perk-desc">Founding offer: You keep 90% of every booking</div>
+            </div>
+            <div class="vet-perk">
+                <div class="perk-icon">✓</div>
+                <div class="perk-title">Verified Badge</div>
+                <div class="perk-desc">Stand out with your credentials</div>
+            </div>
+            <div class="vet-perk">
+                <div class="perk-icon">⭐</div>
+                <div class="perk-title">Premium Placement</div>
+                <div class="perk-desc">Appear first in search results</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <p>Brooklyn has <span>2.6 million residents</span> and an estimated <span>500,000+ cats</span>. They all deserve amazing care. 🐱</p>
+    </section>
+
+    <!-- Value Props -->
+    <section class="value-props">
+        <h2>Why Sitters Love LoafWatch</h2>
+        <p>We built this platform for cat people, by cat people.</p>
+        <div class="prop-grid">
+            <div class="prop-card">
+                <div class="icon">💵</div>
+                <h3>Earn More</h3>
+                <p>Keep 80% of every booking (90% for vet techs!). No hidden fees, no surprises. Get paid 24 hours after each job.</p>
+            </div>
+            <div class="prop-card">
+                <div class="icon">📅</div>
+                <h3>Your Schedule</h3>
+                <p>Set your own availability, rates, and service areas. Work when you want, where you want.</p>
+            </div>
+            <div class="prop-card">
+                <div class="icon">🏘️</div>
+                <h3>Stay Local</h3>
+                <p>Only get matched with cats in your Brooklyn neighborhood. Less commuting, more cuddling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2>How It Works for Sitters</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Create your profile</h3>
+                    <p>Tell us about yourself, your experience with cats, and upload your credentials if you're a vet tech.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Get matched with cats</h3>
+                    <p>Receive booking requests from cat owners in your neighborhood. Accept the ones that fit your schedule.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Do what you love & get paid</h3>
+                    <p>Care for adorable cats, send photo updates, and receive payment directly to your account.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <h2>Ready to join the pride? 🦁</h2>
+        <p>We're building something special for Brooklyn's cat community.</p>
+        <a href="#waitlist" class="btn btn-coral">Sign Up Now →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">🍞 LoafWatch</div>
+        <p>Brooklyn's cat sitting community</p>
+        <p style="margin-top: 16px;">Questions? <a href="mailto:hello@loafwatch.com">hello@loafwatch.com</a></p>
+        <p style="margin-top: 24px; opacity: 0.5;">© 2026 LoafWatch. Made with ❤️ in Brooklyn.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form handling
+        document.getElementById('owner-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('owner-success').style.display = 'block';
+            this.reset();
+        });
+
+        document.getElementById('sitter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('sitter-success').style.display = 'block';
+            this.reset();
+        });
+    </script>
+</body>
+</html>
